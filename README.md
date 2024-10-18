@@ -1,6 +1,6 @@
-A Call of Duty: World at War Gsc to Py Bidirectional Converter
+A Call of Duty: World at War - Gsc syntax to Py-like syntax Bidirectional Converter
 
-Convert GSC code to Python code & Python code to GSC code.
+Convert GSC code to Py-like code & Py-like code to GSC code.
 
 Peace!
 
