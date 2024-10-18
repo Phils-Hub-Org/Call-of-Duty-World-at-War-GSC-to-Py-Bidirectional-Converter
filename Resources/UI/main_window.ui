@@ -189,6 +189,9 @@ QToolButton:disabled {
        <enum>QFrame::Shadow::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -211,16 +214,16 @@ QToolButton:disabled {
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="leftMargin">
-           <number>6</number>
+           <number>9</number>
           </property>
           <property name="topMargin">
-           <number>6</number>
+           <number>9</number>
           </property>
           <property name="rightMargin">
-           <number>6</number>
+           <number>9</number>
           </property>
           <property name="bottomMargin">
-           <number>6</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QLabel" name="label_2">
@@ -257,8 +260,11 @@ QToolButton:disabled {
           <property name="leftMargin">
            <number>9</number>
           </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
           <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit">
+           <widget class="QPlainTextEdit" name="gsc_code_input_area">
             <property name="frameShape">
              <enum>QFrame::Shape::NoFrame</enum>
             </property>
@@ -280,18 +286,24 @@ QToolButton:disabled {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="convert_gsc_to_py_btn">
+               <property name="toolTip">
+                <string>Convert gsc to py</string>
+               </property>
                <property name="icon">
                 <iconset resource="../resources.qrc">
-                 <normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg</normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg</iconset>
+                 <normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg</normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="convert_py_to_gsc_btn">
+               <property name="toolTip">
+                <string>Convert py to gsc</string>
+               </property>
                <property name="icon">
                 <iconset resource="../resources.qrc">
-                 <normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg</normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg</iconset>
+                 <normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg</normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg</iconset>
                </property>
               </widget>
              </item>
@@ -299,7 +311,7 @@ QToolButton:disabled {
            </widget>
           </item>
           <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit_2">
+           <widget class="QPlainTextEdit" name="python_code_input_area">
             <property name="frameShape">
              <enum>QFrame::Shape::NoFrame</enum>
             </property>

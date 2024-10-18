@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QApplication
 from Core.main_window import MainWindow
+from Core.converter import Converter
 
 class Entry:
 
@@ -8,6 +9,8 @@ class Entry:
         
         cls.mainWindow = MainWindow()
         cls.mainWindow.show()
+
+        cls.converter = Converter(cls.mainWindow)
 
 if __name__ == "__main__":
     import sys

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowClpjsr.ui'
+## Form generated from reading UI file 'main_windowBQNsuK.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -197,6 +197,7 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame_4 = QFrame(self.frame_3)
@@ -205,7 +206,7 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_4)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(6, 6, 6, 6)
+        self.horizontalLayout_3.setContentsMargins(9, 9, 9, 0)
         self.label_2 = QLabel(self.frame_4)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -227,13 +228,13 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(9, -1, -1, -1)
-        self.plainTextEdit = QPlainTextEdit(self.frame_5)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setFrameShape(QFrame.Shape.NoFrame)
-        self.plainTextEdit.setTabStopDistance(8.000000000000000)
+        self.horizontalLayout_4.setContentsMargins(9, 9, -1, -1)
+        self.gsc_code_input_area = QPlainTextEdit(self.frame_5)
+        self.gsc_code_input_area.setObjectName(u"gsc_code_input_area")
+        self.gsc_code_input_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.gsc_code_input_area.setTabStopDistance(8.000000000000000)
 
-        self.horizontalLayout_4.addWidget(self.plainTextEdit)
+        self.horizontalLayout_4.addWidget(self.gsc_code_input_area)
 
         self.frame = QFrame(self.frame_5)
         self.frame.setObjectName(u"frame")
@@ -241,31 +242,31 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.pushButton_2 = QPushButton(self.frame)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.convert_gsc_to_py_btn = QPushButton(self.frame)
+        self.convert_gsc_to_py_btn.setObjectName(u"convert_gsc_to_py_btn")
         icon = QIcon()
-        icon.addFile(u":/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.pushButton_2.setIcon(icon)
+        icon.addFile(u":/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.convert_gsc_to_py_btn.setIcon(icon)
 
-        self.verticalLayout_3.addWidget(self.pushButton_2)
+        self.verticalLayout_3.addWidget(self.convert_gsc_to_py_btn)
 
-        self.pushButton_3 = QPushButton(self.frame)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.convert_py_to_gsc_btn = QPushButton(self.frame)
+        self.convert_py_to_gsc_btn.setObjectName(u"convert_py_to_gsc_btn")
         icon1 = QIcon()
-        icon1.addFile(u":/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.pushButton_3.setIcon(icon1)
+        icon1.addFile(u":/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.convert_py_to_gsc_btn.setIcon(icon1)
 
-        self.verticalLayout_3.addWidget(self.pushButton_3)
+        self.verticalLayout_3.addWidget(self.convert_py_to_gsc_btn)
 
 
         self.horizontalLayout_4.addWidget(self.frame)
 
-        self.plainTextEdit_2 = QPlainTextEdit(self.frame_5)
-        self.plainTextEdit_2.setObjectName(u"plainTextEdit_2")
-        self.plainTextEdit_2.setFrameShape(QFrame.Shape.NoFrame)
-        self.plainTextEdit_2.setTabStopDistance(8.000000000000000)
+        self.python_code_input_area = QPlainTextEdit(self.frame_5)
+        self.python_code_input_area.setObjectName(u"python_code_input_area")
+        self.python_code_input_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.python_code_input_area.setTabStopDistance(8.000000000000000)
 
-        self.horizontalLayout_4.addWidget(self.plainTextEdit_2)
+        self.horizontalLayout_4.addWidget(self.python_code_input_area)
 
 
         self.verticalLayout_2.addWidget(self.frame_5)
@@ -284,7 +285,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Phils-Hub - GSC > Py Bidirectional Converter", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"GSC", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"PYTHON", None))
-        self.plainTextEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste gsc code here to convert to python", None))
-        self.plainTextEdit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste python code here to convert to gsc", None))
+        self.gsc_code_input_area.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste gsc code here to convert to python", None))
+#if QT_CONFIG(tooltip)
+        self.convert_gsc_to_py_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Convert gsc to py", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.convert_py_to_gsc_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Convert py to gsc", None))
+#endif // QT_CONFIG(tooltip)
+        self.python_code_input_area.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste python code here to convert to gsc", None))
     # retranslateUi
 
