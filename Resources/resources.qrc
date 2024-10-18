@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="888EAC-20px">
+    <file>ICONS/888EAC-20px/arrow-left.svg</file>
+    <file>ICONS/888EAC-20px/arrow-right.svg</file>
+  </qresource>
+</RCC>

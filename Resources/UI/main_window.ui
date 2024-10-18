@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1120</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1120</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Phils-Hub - GSC &gt; Py Bidirectional Converter</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">/* Central Widget */
+QWidget#centralwidget {
+    background-color: #1e1e1e;  /* Dark gray background */
+    border: none;               /* No border for a cleaner look */
+    padding: 15px;              /* Padding inside the central widget */
+}
+
+/* Scroll Area Styling (optional) */
+QScrollArea {
+    background-color: transparent; /* Transparent to match the central widget */
+    border: none;                  /* No border */
+}
+
+QScrollBar:vertical {
+    background-color: #3c3f41;    /* Darker gray for scroll bar background */
+    width: 12px;                  /* Scroll bar width */
+    margin: 22px 0 22px 0;        /* Top and bottom margins */
+}
+
+QScrollBar::handle:vertical {
+    background-color: #5b5e60;    /* Slightly lighter gray for scroll handle */
+    min-height: 20px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;             /* Remove arrows */
+}
+
+/* QPushButton */
+QPushButton {
+    background-color: #3c3f41;  /* Dark gray background */
+    color: #ffffff;             /* White text */
+    border: 1px solid #5b5e60;  /* Light gray border */
+    border-radius: 4px;         /* Rounded corners */
+    padding: 6px 12px;          /* Padding for comfortable button size */
+    font-size: 14px;            /* Button text size */
+}
+
+QPushButton:hover {
+    background-color: #4a90e2;  /* Light blue on hover */
+    border-color: #3d78b2;      /* Darker blue border */
+}
+
+QPushButton:pressed {
+    background-color: #3d78b2;  /* Darker blue on press */
+    border-color: #2a5f92;      /* Even darker border when pressed */
+}
+
+/* QLabel */
+QLabel {
+    color: #ffffff;             /* White text */
+    font-size: 14px;            /* Set font size */
+    padding: 3px;              /* Padding inside the central widget */
+}
+
+/* QFrame */
+QFrame {
+    background-color: #2e2e2e;  /* Dark gray for frames */
+    border-radius: 0px;         /* No rounded corners */
+}
+
+/* QLineEdit */
+QLineEdit {
+    background-color: #2e2e2e;  /* Dark gray background for input fields */
+    color: #ffffff;             /* White text */
+    border: 1px solid #5b5e60;  /* Light gray border */
+    border-radius: 4px;         /* Rounded corners */
+    padding: 6px;               /* Padding for text input area */
+}
+
+QLineEdit:focus {
+    border-color: #4a90e2;      /* Light blue border when focused */
+    background-color: #333333;  /* Slightly lighter gray on focus */
+}
+
+/* QPlainTextEdit */
+QPlainTextEdit {
+    background-color: #2b2b2b;  /* Darker gray background for text area */
+    color: #ffffff;             /* White text */
+    border: 1px solid #5b5e60;  /* Light gray border */
+    border-radius: 0px;         /* No rounded corners */
+    padding: 10px;              /* Comfortable padding for text input */
+    font-size: 13px;            /* Slightly smaller font */
+    line-height: 1.4;           /* Adjust line spacing for readability */
+}
+
+QPlainTextEdit:focus {
+    border-color: #4a90e2;      /* Light blue border on focus */
+    background-color: #3a3a3a;  /* Slightly lighter gray on focus */
+}
+
+/* QRadioButton */
+QRadioButton {
+    color: #ffffff;              /* White text */
+    font-size: 14px;             /* Font size for readability */
+    spacing: 5px;                /* Space between radio button and label */
+}
+
+QRadioButton::indicator {
+    width: 16px;                 /* Size of the radio button */
+    height: 16px;
+    background-color: #2e2e2e;   /* Dark gray background for the indicator */
+    border: 1px solid #5b5e60;   /* Light gray border */
+    border-radius: 8px;          /* Circular radio button */
+}
+
+QRadioButton::indicator:hover {
+    background-color: #4a90e2;   /* Light blue on hover */
+    border-color: #3d78b2;       /* Darker blue border on hover */
+}
+
+QRadioButton::indicator:checked {
+    background-color: #4a90e2;   /* Light blue when checked */
+    border-color: #3d78b2;       /* Darker blue border when checked */
+}
+
+QRadioButton::indicator:pressed {
+    background-color: #3d78b2;   /* Darker blue on press */
+    border-color: #2a5f92;       /* Even darker border on press */
+}
+
+QRadioButton::indicator:checked:pressed {
+    background-color: #3d78b2;   /* Darker blue when checked and pressed */
+    border-color: #2a5f92;       /* Even darker border when checked and pressed */
+}
+
+/* QToolButton */
+QToolButton {
+    background-color: #3c3f41;    /* Dark gray background */
+    color: #ffffff;               /* White text/icon */
+    border: 1px solid #5b5e60;    /* Light gray border */
+    border-radius: 4px;           /* Rounded corners */
+    padding: 6px 12px;            /* Padding for comfortable button size */
+    font-size: 14px;              /* Font size for text (if any) */
+}
+
+QToolButton:hover {
+    background-color: #4a90e2;    /* Light blue background on hover */
+    border-color: #3d78b2;        /* Darker blue border on hover */
+}
+
+QToolButton:pressed {
+    background-color: #3d78b2;    /* Darker blue background on press */
+    border-color: #2a5f92;        /* Even darker border when pressed */
+}
+
+QToolButton:checked {
+    background-color: #3d78b2;    /* Darker blue when checked */
+    border-color: #2a5f92;        /* Border color when checked */
+}
+
+QToolButton:disabled {
+    background-color: #2e2e2e;    /* Dark gray when disabled */
+    color: #777777;               /* Lighter gray text/icon for disabled state */
+    border-color: #5b5e60;        /* Keep the border color same as normal state */
+}
+</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame_3">
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::Shape::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
+          <property name="topMargin">
+           <number>6</number>
+          </property>
+          <property name="rightMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>GSC</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>PYTHON</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_5">
+         <property name="frameShape">
+          <enum>QFrame::Shape::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextEdit">
+            <property name="frameShape">
+             <enum>QFrame::Shape::NoFrame</enum>
+            </property>
+            <property name="tabStopDistance">
+             <double>8.000000000000000</double>
+            </property>
+            <property name="placeholderText">
+             <string>Paste gsc code here to convert to python</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg</normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-left.svg</iconset>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_3">
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg</normaloff>:/888EAC-20px/ICONS/888EAC-20px/arrow-right.svg</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextEdit_2">
+            <property name="frameShape">
+             <enum>QFrame::Shape::NoFrame</enum>
+            </property>
+            <property name="tabStopDistance">
+             <double>8.000000000000000</double>
+            </property>
+            <property name="placeholderText">
+             <string>Paste python code here to convert to gsc</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
