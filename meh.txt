@@ -102,3 +102,45 @@ def my_function(x):
     ('operator', '+'),
     ('operator', '='), ('number', '1'), ('punctuation', ';'), ('newline', '\n'), ('punctuation', '}')
 ]
+
+COMMENT: For single-line and multi-line comments.
+IDENTIFIER: For variable names, function names, etc.
+
+ADD: For the + character.
+SUBTRACT: For the - character.
+MULTIPLY: For the * character.
+DIVIDE: For the / character.
+MODULUS: For the % character.
+ASSIGNMENT: For the = character.
+EQUALS: For the == character.
+GREATER_THAN: For the > character.
+LESS_THAN: For the < character.
+GREATER_THAN_OR_EQUAL_TO: For the >= character.
+LESS_THAN_OR_EQUAL_TO: For the <= character.
+PLUS_EQUALS: For the += character.
+SUBTRACT_EQUALS: For the -= character.
+MULTIPLY_EQUALS: For the *= character.
+DIVIDE_EQUALS: For the /= character.
+
+NUMBER: For numerical values.
+KEYWORD: For language keywords like if.
+SEMICOLON: For the ; character.
+LPAREN: For the ( character.
+RPAREN: For the ) character.
+LBRACE: For the { character.
+RBRACE: For the } character.
+LBRACKET: For the [ character.
+RBRACKET: For the ] character.
+QUOTE: For the " character.
+DOUBLE_COLON_IDENTIFIER: For the :: character.
+SEMICOLON: For the ; character.
+PREPROCESSOR_DIRECTIVE: For preprocessor directives like #include.
+STRING: For string literals or paths used in directives.
+DOT: For the . character.
+COMMA: For the , character.
+LOCAL_STRING: For the & character.
+LOGICAL_AND: For the && character.
+LOGICAL_NOT: For the ! character.
+LOGICAL_OR: For the || character.
+PATH_SEPARATOR: For the \ character.
+EOF: For the end of the file.

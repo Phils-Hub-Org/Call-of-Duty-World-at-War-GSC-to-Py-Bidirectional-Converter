@@ -46,24 +46,24 @@ myFunc(arg) {
 
 Output:
     Token Type      Token Value
-    comment         "// This is a single-line comment"
-    identifier      "x"
-    operator        "="
-    number          "10"
-    punctuation     ";"
-    comment	        "/* this is a multi-line\ncomment */"
-    keyword	        "if"
-    punctuation	    "("
-    identifier	    "x"
-    operator	    ">"
-    number	        "5"
-    punctuation	    ")"
-    punctuation	    "{"
-    identifier	    "x"
-    operator	    "+="
-    number	        "1"
-    punctuation	    ";"
-    punctuation	    "}"
+    COMMENT         "// This is a single-line comment"
+    IDENTIFIER      "x"
+    OPERATOR        "="
+    NUMBER          "10"
+    PUNCTUATION     ";"
+    COMMENT	        "/* this is a multi-line\ncomment */"
+    KEYWORD	        "if"
+    PUNCTUATION	    "("
+    IDENTIFIER	    "x"
+    OPERATOR	    ">"
+    NUMBER	        "5"
+    PUNCTUATION	    ")"
+    PUNCTUATION	    "{"
+    IDENTIFIER	    "x"
+    OPERATOR	    "+="
+    NUMBER	        "1"
+    PUNCTUATION	    ";"
+    PUNCTUATION	    "}"
 
 Note: A newline is treated as a single character when iterating through a string.
 """
@@ -137,7 +137,7 @@ class GscToPyLexer(Lexer):
             cls.TOKENS.append(('NEWLINE', cls.currChar()))
             cls.incrementPosition()
 
-        # Comments
+        # Comment
         elif cls.isCurrChar('/'):
             # Single-line comment
             if cls.isNextChar('/'):
@@ -167,17 +167,7 @@ class GscToPyLexer(Lexer):
             
                 cls.TOKENS.append(('COMMENT', comment))
         
-        # Operators
-        elif cls.currChar() in {'+', '=', '-', '<', '>', '*', '/', '%'}:
-            cls.TOKENS.append(('OPERATOR', cls.currChar()))
-            cls.incrementPosition()
-        
-        # Punctuation
-        elif cls.currChar() in {';', '(', ')', '{', '}', '[' ,']', '"', ':'}:
-            cls.TOKENS.append(('PUNCTUATION', cls.currChar()))
-            cls.incrementPosition()
-        
-        # Identifiers
+        # Identifier
         elif cls.currChar().isalpha() or cls.isCurrChar('_') or (cls.currChar().isalpha() and cls.nextChar().isdigit()) or (cls.currChar().isdigit() and cls.nextChar().isalpha()):
             identifier = ''
             while not cls.endOfInput() and cls.currChar().isalpha() or cls.currChar().isdigit() or cls.isCurrChar('_'):
@@ -185,8 +175,90 @@ class GscToPyLexer(Lexer):
                 cls.incrementPosition()
             
             cls.TOKENS.append(('IDENTIFIER', identifier))
-
-        # Numbers
+        
+        # Modulus
+        elif cls.isCurrChar('%'):
+            cls.TOKENS.append(('MODULUS', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Assignment | Equals
+        elif cls.isCurrChar('='):
+            # Equals
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('EQUALS', '=='))
+                cls.incrementPosition(2)
+            # Assignment
+            else:
+                cls.TOKENS.append(('ASSIGNMENT', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Greater than or equal to | Greater than
+        elif cls.isCurrChar('>'):
+            # Greater than or equal to
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('GREATER_THAN_OR_EQUAL_TO', '>='))
+                cls.incrementPosition(2)
+            # Greater than
+            else:
+                cls.TOKENS.append(('GREATER_THAN', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Less than or equal to
+        elif cls.isCurrChar('<'):
+            # Less than or equal to
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('LESS_THAN_OR_EQUAL_TO', '<='))
+                cls.incrementPosition(2)
+            # Less than
+            else:
+                cls.TOKENS.append(('LESS_THAN_OR_EQUAL_TO', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Plus equals | Addition
+        elif cls.isCurrChar('+'):
+            # Plus equals
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('PLUS_EQUALS', '+='))
+                cls.incrementPosition(2)
+            # Addition
+            else:
+                cls.TOKENS.append(('PLUS', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Subtract equals | Subtraction
+        elif cls.isCurrChar('-'):
+            # Subtract equals
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('SUBTRACT_EQUALS', '-='))
+                cls.incrementPosition(2)
+            # Subtraction
+            else:
+                cls.TOKENS.append(('SUBTRACT', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Multiply equals | Multiplication
+        elif cls.isCurrChar('*'):
+            # Multiply equals
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('MULTIPLY_EQUALS', '*='))
+                cls.incrementPosition(2)
+            # Multiplication
+            else:
+                cls.TOKENS.append(('MULTIPLY', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Divide equals | Division
+        elif cls.isCurrChar('/'):
+            # Divide equals
+            if cls.isNextChar('='):
+                cls.TOKENS.append(('DIVIDE_EQUALS', '/='))
+                cls.incrementPosition(2)
+            # Division
+            else:
+                cls.TOKENS.append(('DIVIDE', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Number
         elif cls.currChar().isdigit():
             number = ''
             while not cls.endOfInput() and cls.currChar().isdigit():
@@ -195,9 +267,125 @@ class GscToPyLexer(Lexer):
             
             cls.TOKENS.append(('NUMBER', number))
         
+        # Keyword
+        elif cls.currChar() in {'if', 'else', 'while', 'for', 'switch', 'case', 'break', 'continue', 'return', 'true', 'false', 'undefined', 'include', 'level', 'self', 'thread'}:
+            cls.TOKENS.append(('KEYWORD', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Semicolon
+        elif cls.isCurrChar(';'):
+            cls.TOKENS.append(('SEMICOLON', cls.currChar()))
+            cls.incrementPosition()
+        
+        # LParen
+        elif cls.isCurrChar('('):
+            cls.TOKENS.append(('LPAREN', cls.currChar()))
+            cls.incrementPosition()
+        
+        # RParen
+        elif cls.isCurrChar(')'):
+            cls.TOKENS.append(('RPAREN', cls.currChar()))
+            cls.incrementPosition()
+        
+        # LBrace
+        elif cls.isCurrChar('{'):
+            cls.TOKENS.append(('LBRACE', cls.currChar()))
+            cls.incrementPosition()
+        
+        # RBrace
+        elif cls.isCurrChar('}'):
+            cls.TOKENS.append(('RBRACE', cls.currChar()))
+            cls.incrementPosition()
+        
+        # LBracket
+        elif cls.isCurrChar('['):
+            cls.TOKENS.append(('LBRACKET', cls.currChar()))
+            cls.incrementPosition()
+        
+        # RBracket
+        elif cls.isCurrChar(']'):
+            cls.TOKENS.append(('RBRACKET', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Quote
+        elif cls.isCurrChar('"'):
+            cls.TOKENS.append(('QUOTE', cls.currChar()))
+
+            # Move past opening quote
+            cls.incrementPosition()
+
+            # String
+            string = ''
+            while not cls.endOfInput() and not cls.isCurrChar('"'):
+                string += cls.currChar()
+                cls.incrementPosition()
+            
+            cls.TOKENS.append(('STRING', string))
+
+            cls.TOKENS.append(('QUOTE', cls.currChar()))
+
+            # Move past closing quote
+            cls.incrementPosition()
+        
+        # Double Colon
+        elif cls.isCurrChar(':') and cls.isNextChar(':'):
+            cls.TOKENS.append(('DOUBLE_COLON', cls.currChar() + cls.nextChar()))
+            cls.incrementPosition(2)
+        
+        # Preprocessor Directive
+        elif cls.isCurrChar('#'):
+            line = ''
+            while not cls.endOfInput() and cls.currChar() != '\n':
+                line += cls.currChar()
+                cls.incrementPosition()
+            
+            cls.TOKENS.append(('PREPROCESSOR_DIRECTIVE', line))
+        
+        # Dot
+        elif cls.isCurrChar('.'):
+            cls.TOKENS.append(('DOT', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Comma
+        elif cls.isCurrChar(','):
+            cls.TOKENS.append(('COMMA', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Local String | Logical And
+        elif cls.isCurrChar('&'):
+            # Logical And
+            if cls.isNextChar('&'):
+                cls.TOKENS.append(('LOGICAL_AND', cls.currChar() + cls.nextChar()))
+                cls.incrementPosition(2)
+            # Local String
+            else:
+                cls.TOKENS.append(('LOCAL_STRING', cls.currChar()))
+                cls.incrementPosition()
+        
+        # Logical Or
+        elif cls.isCurrChar('|') and cls.isNextChar('|'):
+            cls.TOKENS.append(('LOGICAL_OR', cls.currChar() + cls.nextChar()))
+            cls.incrementPosition(2)
+        
+        # Logical Not
+        elif cls.isCurrChar('!'):
+            cls.TOKENS.append(('LOGICAL_NOT', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Path Separator
+        elif cls.isCurrChar('\\'):
+            cls.TOKENS.append(('PATH_SEPARATOR', cls.currChar()))
+            cls.incrementPosition()
+        
+        # End of input
+        elif cls.endOfInput():
+            print('End of input reached')
+            cls.TOKENS.append(('END', 'EOF'))
+            return
+        
         # Unrecognized character
         else:
-            print(f'Unrecognized character: {cls.currChar()}')
+            print(f'Unrecognized character: {cls.currChar()}, Pos: {cls.currPos()}')
             cls.TOKENS.append(('UNKNOWN', cls.currChar()))
             cls.incrementPosition()
 
