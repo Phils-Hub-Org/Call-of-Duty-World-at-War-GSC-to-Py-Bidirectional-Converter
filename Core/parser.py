@@ -19,6 +19,30 @@ Attributes:
 Methods:
 - `parse_expression()`: Parse an expression (e.g., `x = 5`).
 - `parse_statement()`: Parse a statement (e.g., `if`, `while`, `function
+
+Program
+├── Comment: " This is a single-line comment"
+├── Comment: "\nThis is a,\nmulti-line comment\n"
+├── FunctionDeclaration
+│   ├── Identifier: "myFunc"
+│   ├── Parameters
+│   │   └── Identifier: "arg"
+│   └── Block
+│       ├── VariableDeclaration
+│       │   ├── Identifier: "x"
+│       │   ├── Operator: "="
+│       │   └── Number: "10"
+│       ├── Comment: " Initialize x"
+│       ├── IfStatement
+│       │   ├── Condition
+│       │   │   ├── Identifier: "x"
+│       │   │   ├── Operator: ">"
+│       │   │   └── Number: "5"
+│       │   └── Block
+│       │       └── ExpressionStatement
+│       │           ├── Identifier: "x"
+│       │           ├── Operator: "+="
+│       │           └── Number: "1"
 """
 
 def parseGscToPython(tokens):

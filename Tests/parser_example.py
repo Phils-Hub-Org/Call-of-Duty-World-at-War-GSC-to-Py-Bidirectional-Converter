@@ -1,28 +1,3 @@
-"""
-Program
-├── Comment: " This is a single-line comment"
-├── Comment: "\nThis is a,\nmulti-line comment\n"
-├── FunctionDeclaration
-│   ├── Identifier: "myFunc"
-│   ├── Parameters
-│   │   └── Identifier: "arg"
-│   └── Block
-│       ├── VariableDeclaration
-│       │   ├── Identifier: "x"
-│       │   ├── Operator: "="
-│       │   └── Number: "10"
-│       ├── Comment: " Initialize x"
-│       ├── IfStatement
-│       │   ├── Condition
-│       │   │   ├── Identifier: "x"
-│       │   │   ├── Operator: ">"
-│       │   │   └── Number: "5"
-│       │   └── Block
-│       │       └── ExpressionStatement
-│       │           ├── Identifier: "x"
-│       │           ├── Operator: "+="
-│       │           └── Number: "1"
-"""
 class Token:
     def __init__(self, type, value):
         self.type = type
