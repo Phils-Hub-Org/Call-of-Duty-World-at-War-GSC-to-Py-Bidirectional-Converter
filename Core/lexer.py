@@ -44,12 +44,12 @@ if (x > 5) {
 
 Output:
     Token Type      Token Value
-    comment         "This is a comment"
+    comment         "// This is a single-line comment"
     identifier      "x"
     operator        "="
     number          "10"
     punctuation     ";"
-    comment	        "Initialize x"
+    comment	        "/* this is a multi-line\ncomment */"
     keyword	        "if"
     punctuation	    "("
     identifier	    "x"
@@ -81,62 +81,35 @@ class Lexer:
         cls.POSITION += amount
     
     @classmethod
-    def endOfInput(cls) -> bool:
-        return cls.currPos() >= len(cls.CODE)
+    def currChar(cls) -> str:
+        return cls.CODE[cls.POSITION]
+    
+    @classmethod
+    def nextChar(cls) -> str:
+        return cls.CODE[cls.POSITION + 1]
 
     @classmethod
     def isCurrChar(cls, char: str) -> bool:
-        return cls.CODE[cls.currPos()] == char
+        return cls.CODE[cls.POSITION] == char
     
     @classmethod
     def isNextChar(cls, char: str) -> bool:
-        return cls.CODE[cls.currPos() + 1] == char
+        return cls.CODE[cls.POSITION + 1] == char
+    
+    @staticmethod
+    def isCustomWhitespace(value: str) -> bool:
+        # Cause str.isspace() returns true for '\n' of which we are not going to ignore
+        return value in {' ', '\t', '\r', '\f', '\v'}
+
+    @classmethod
+    def endOfInput(cls) -> bool:
+        return cls.POSITION >= len(cls.CODE)
 
     @classmethod
     def reset(cls) -> None:
         cls.CODE = ""
         cls.POSITION = 0
         cls.TOKENS = []
-
-class Token:
-
-    @classmethod
-    def getType(cls, value: str) -> tuple:
-        match value:
-            # Keywords
-            case value if value in {'if', 'else', 'while', 'for', 'switch', 'case', 'break', 'continue', 'return', 'true', 'false', 'undefined', 'include'}:
-                return ('keyword', value)
-            
-            # Identifiers (can be var, function, etc.)  var, var1, func, func1, etc.
-            # Alphabetical chars
-            case value if value.isalpha():  # (this checks all chars in value)
-                return ('identifier', value)
-            # Alphanumeric and Numeric chars
-            case value if cls.containsBothLettersAndDigits(value):
-                return ('identifier', value)
-
-            # Numbers
-            case value if value.isdigit():
-                return ('number', value)
-
-            # Whitespace
-            case value if value in {' ', '\t', '\n', '\r'}:
-                return ('comment', value)
-
-            # Operators
-            case value if value in {'+', '=', '-', '*', '/'}:
-                return ('operator', value)
-
-            # Punctuation
-            case value if value in {';', '(', ')', '{', '}'}:
-                return ('punctuation', value)
-            
-            # Anything else (default case)
-            case _:
-                return ('unknown', value)  # Can handle unknown characters if needed
-    
-    def containsBothLettersAndDigits(value: str) -> bool:
-        return any(char.isalpha() for char in value) and any(char.isdigit() for char in value)
 
 class GscToPyLexer(Lexer):
     
@@ -146,52 +119,83 @@ class GscToPyLexer(Lexer):
         cls.CODE = code.strip()
         cls.POSITION = 0
         cls.TOKENS = []
-        cls.getNextToken()
+        while not cls.endOfInput(): cls.getNextToken()
         return cls.TOKENS
     
     @classmethod
     def getNextToken(cls) -> None:
         # Get the next token
-        code_len = len(cls.CODE)
-        curr_char = cls.CODE[cls.POSITION]
-        next_char = cls.CODE[cls.POSITION + 1]
 
-        # Ignore spaces
-        while not cls.endOfInput() and curr_char.isspace():
+        # Spaces: Ignore
+        while cls.isCustomWhitespace(cls.currChar()):
             cls.incrementPosition()
-
-        # Ignore comments
-        if curr_char == '/':
-            # Check for single-line comment
-            if next_char == '/':
-                # Skip to the end of the line
-                while not cls.endOfInput() and not cls.isCurrChar('\n'):
-                    cls.incrementPosition()
-
-                # Skip to the next line
-                cls.incrementPosition()
-
-            # Check for multi-line comment
-            elif next_char == '*':
-                while not cls.endOfInput() and (not cls.isCurrChar('*') or not cls.isNextChar('/')):
-                    cls.incrementPosition()
-                
-                # Skip to the next line
-                cls.incrementPosition(2)
-
-            else:
-                cls.TOKENS.append(Token.getType(curr_char))
-                cls.incrementPosition()
-                cls.getNextToken()
-
-        else:
-            cls.TOKENS.append(curr_char)
-            cls.incrementPosition()
-            cls.getNextToken()
         
-        # End of input
-        if cls.currPos() >= code_len:
-            return
+        # Newline
+        if cls.isCurrChar('\n'):
+            cls.TOKENS.append(('NEWLINE', cls.currChar()))
+            cls.incrementPosition()
+
+        # Comments
+        elif cls.isCurrChar('/'):
+            # Single-line comment
+            if cls.isNextChar('/'):
+                # Move past '//'
+                cls.incrementPosition(2)
+                comment = ''
+                while not cls.endOfInput() and not cls.isCurrChar('\n'):
+                    comment += cls.currChar()
+                    cls.incrementPosition()
+
+            # Multi-line comment
+            elif cls.isNextChar('*'):
+                # Move past '/*'
+                cls.incrementPosition(2)
+                comment = ''
+                
+                # Capture multi-line comment content
+                while not cls.endOfInput():
+                    if cls.isCurrChar('*') and cls.isNextChar('/'):
+                        # Move past '*/'
+                        cls.incrementPosition(2)
+                        break
+                    comment += cls.currChar()
+                    cls.incrementPosition()
+            
+            cls.TOKENS.append(('COMMENT', comment))
+        
+        # Operators
+        elif cls.currChar() in {'+', '=', '-', '<', '>', '*', '/', '%'}:
+            cls.TOKENS.append(('OPERATOR', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Punctuation
+        elif cls.currChar() in {';', '(', ')', '{', '}', '[' ,']', '"', ':'}:
+            cls.TOKENS.append(('PUNCTUATION', cls.currChar()))
+            cls.incrementPosition()
+        
+        # Identifiers
+        elif cls.currChar().isalpha() or cls.isCurrChar('_') or (cls.currChar().isalpha() and cls.nextChar().isdigit()) or (cls.currChar().isdigit() and cls.nextChar().isalpha()):
+            identifier = ''
+            while not cls.endOfInput() and cls.currChar().isalpha() or cls.currChar().isdigit() or cls.isCurrChar('_'):
+                identifier += cls.currChar()
+                cls.incrementPosition()
+            
+            cls.TOKENS.append(('IDENTIFIER', identifier))
+
+        # Numbers
+        elif cls.currChar().isdigit():
+            number = ''
+            while not cls.endOfInput() and cls.currChar().isdigit():
+                number += cls.currChar()
+                cls.incrementPosition()
+            
+            cls.TOKENS.append(('NUMBER', number))
+        
+        # Unrecognized character
+        else:
+            print(f'Unrecognized character: {cls.currChar()}')
+            cls.TOKENS.append(('UNKNOWN', cls.currChar()))
+            cls.incrementPosition()
 
 class PyToGscLexer(Lexer):
     
