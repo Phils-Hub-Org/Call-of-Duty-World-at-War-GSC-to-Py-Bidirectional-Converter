@@ -25,9 +25,9 @@ class Converter:
         # print(True if '\n' in gsc_code else False)
 
         # 1. Tokenize the GSC code
-        tokens = GscToPyLexer.tokenize(gsc_code)
+        tokens = GscToPyLexer.tokenize(self.ui.gsc_code_input_area, gsc_code)
 
-        print('\n'.join(str(token) for token in tokens))  # Print the tokens for debugging purposes (uncomment to see tokens)
+        print('\n'.join(str(token) for token in tokens))  # Print the tokens for debugging purposes
 
         # # 2. Parse the tokens into Python code
         # python_code = parseGscToPython(tokens)

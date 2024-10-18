@@ -45,34 +45,52 @@ myFunc(arg) {
 }
 
 Output:
-    Token Type      Token Value
-    COMMENT         "// This is a single-line comment"
-    IDENTIFIER      "x"
-    OPERATOR        "="
-    NUMBER          "10"
-    PUNCTUATION     ";"
-    COMMENT	        "/* this is a multi-line\ncomment */"
-    KEYWORD	        "if"
-    PUNCTUATION	    "("
-    IDENTIFIER	    "x"
-    OPERATOR	    ">"
-    NUMBER	        "5"
-    PUNCTUATION	    ")"
-    PUNCTUATION	    "{"
-    IDENTIFIER	    "x"
-    OPERATOR	    "+="
-    NUMBER	        "1"
-    PUNCTUATION	    ";"
-    PUNCTUATION	    "}"
+    Token Type          Token Value
+    ('COMMENT',         ' This is a single-line comment')    
+    ('NEWLINE',         '\n')
+    ('COMMENT',         '\nThis is a,\nmulti-line comment\n')
+    ('NEWLINE',         '\n')
+    ('IDENTIFIER',      'myFunc')
+    ('LPAREN',          '(')
+    ('IDENTIFIER',      'arg')
+    ('RPAREN',          ')')
+    ('LBRACE',        '{')
+    ('NEWLINE',         '\n')
+    ('IDENTIFIER',      'x')
+    ('ASSIGNMENT',    '=')
+    ('NUMBER',          '10')
+    ('SEMICOLON',      ';')
+    ('COMMENT',         ' Initialize x')
+    ('NEWLINE',         '\n')
+    ('IDENTIFIER',      'if')
+    ('LPAREN',          '(')
+    ('IDENTIFIER',      'x')
+    ('GREATER_THAN',    '>')
+    ('NUMBER',          '5')
+    ('RPAREN',          ')')
+    ('LBRACE',          '{')
+    ('NEWLINE',         '\n')
+    ('IDENTIFIER',      'x')
+    ('PLUS_EQUALS',     '+=')
+    ('NUMBER',          '1')
+    ('SEMICOLON',       ';')
+    ('NEWLINE',         '\n')
+    ('RBRACE',          '}')
+    ('NEWLINE',         '\n')
+    ('RBRACE',          '}')
 
 Note: A newline is treated as a single character when iterating through a string.
 """
+
+import traceback
+from PySide6.QtWidgets import QPlainTextEdit
 
 class Lexer:
 
     CODE: str
     POSITION: int
     TOKENS: list
+    PLAIN_TEXT_EDIT: QPlainTextEdit
 
     @classmethod
     def currPos(cls) -> int:
@@ -104,7 +122,26 @@ class Lexer:
         return value in {' ', '\t', '\r', '\f', '\v'}
 
     @classmethod
+    def getLineNumber(cls):
+        # Create a QTextCursor at the given character position
+        text_cursor = cls.PLAIN_TEXT_EDIT.textCursor()
+        text_cursor.setPosition(cls.POSITION)
+        
+        # Get the block (line) number
+        line_number = text_cursor.blockNumber()
+        return line_number
+    
+    @classmethod
+    def prevChar(cls) -> str:
+        return cls.CODE[cls.POSITION - 1]
+
+    @classmethod
+    def prevPos(cls) -> int:
+        return cls.POSITION - 1
+
+    @classmethod
     def endOfInput(cls) -> bool:
+        """ return cls.POSITION >= len(cls.CODE) """
         return cls.POSITION >= len(cls.CODE)
 
     @classmethod
@@ -112,16 +149,29 @@ class Lexer:
         cls.CODE = ""
         cls.POSITION = 0
         cls.TOKENS = []
+        cls.PLAIN_TEXT_EDIT = None
 
 class GscToPyLexer(Lexer):
     
     @classmethod
-    def tokenize(cls, code: str) -> list:
+    def tokenize(cls, plainTextEdit, code: str) -> list:
         # Tokenize the GSC code
         cls.CODE = code.strip()
         cls.POSITION = 0
         cls.TOKENS = []
-        while not cls.endOfInput(): cls.getNextToken()
+        cls.PLAIN_TEXT_EDIT = plainTextEdit
+        try:
+            while not cls.endOfInput():
+                cls.getNextToken()
+        except Exception as e:
+            print(f"""
+An error occurred while tokenizing the GSC code: {e}
+Offending character: '{cls.prevChar()}'
+Char Position: {cls.prevPos()}
+Line Number: {cls.getLineNumber() + 1}
+/*========================================
+{traceback.format_exc()}========================================*/""")
+            # print(f"An error occurred while tokenizing the GSC code: {e}")
         return cls.TOKENS
     
     @classmethod
@@ -167,10 +217,20 @@ class GscToPyLexer(Lexer):
             
                 cls.TOKENS.append(('COMMENT', comment))
         
-        # Identifier
-        elif cls.currChar().isalpha() or cls.isCurrChar('_') or (cls.currChar().isalpha() and cls.nextChar().isdigit()) or (cls.currChar().isdigit() and cls.nextChar().isalpha()):
+        # Identifier | Number
+        elif cls.currChar().isalpha() or cls.currChar().isdigit() or cls.isCurrChar('_'):
+            # Number
+            # if cls.currChar().isdigit():
+            #     number = ''
+            #     while not cls.endOfInput() and cls.currChar().isdigit():
+            #         number += cls.currChar()
+            #         cls.incrementPosition()
+                
+            #     cls.TOKENS.append(('NUMBER', number))
+            
+            # Identifier
             identifier = ''
-            while not cls.endOfInput() and cls.currChar().isalpha() or cls.currChar().isdigit() or cls.isCurrChar('_'):
+            while not cls.endOfInput() and (cls.currChar().isalpha() or cls.currChar().isdigit() or cls.isCurrChar('_')):
                 identifier += cls.currChar()
                 cls.incrementPosition()
             
@@ -257,15 +317,6 @@ class GscToPyLexer(Lexer):
             else:
                 cls.TOKENS.append(('DIVIDE', cls.currChar()))
                 cls.incrementPosition()
-        
-        # Number
-        elif cls.currChar().isdigit():
-            number = ''
-            while not cls.endOfInput() and cls.currChar().isdigit():
-                number += cls.currChar()
-                cls.incrementPosition()
-            
-            cls.TOKENS.append(('NUMBER', number))
         
         # Keyword
         elif cls.currChar() in {'if', 'else', 'while', 'for', 'switch', 'case', 'break', 'continue', 'return', 'true', 'false', 'undefined', 'include', 'level', 'self', 'thread'}:

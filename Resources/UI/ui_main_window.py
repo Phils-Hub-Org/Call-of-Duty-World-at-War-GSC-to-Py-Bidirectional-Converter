@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowXHBBvi.ui'
+## Form generated from reading UI file 'main_windowNhPSwP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -79,18 +79,16 @@ class Ui_MainWindow(object):
 "QLabel {\n"
 "    color: #ffffff;             /* White text */\n"
 "    font-size: 14px;            /* Set font size */\n"
-"    padding: 3px;              /* Padding inside the central widget */\n"
 "}\n"
 "\n"
 "/* QFrame */\n"
 "QFrame {\n"
-"    background-colo"
-                        "r: #2e2e2e;  /* Dark gray for frames */\n"
-"    border-radius: 0px;         /* No rounded corners */\n"
+"    background-color: #2e2e2e;  /* Dark gray for frames */\n"
 "}\n"
 "\n"
 "/* QLineEdit */\n"
-"QLineEdit {\n"
+""
+                        "QLineEdit {\n"
 "    background-color: #2e2e2e;  /* Dark gray background for input fields */\n"
 "    color: #ffffff;             /* White text */\n"
 "    border: 1px solid #5b5e60;  /* Light gray border */\n"
@@ -109,10 +107,10 @@ class Ui_MainWindow(object):
 "    color: #ffffff;             /* White text */\n"
 "    border: 1px solid #5b5e60;  /* Light gray border */\n"
 "    border-radius: 0px;         /* No rounded corners */\n"
-"    padding: 10px;              /* Comfortable padding for text"
-                        " input */\n"
+"    padding: 10px;              /* Comfortable padding for text input */\n"
 "    font-size: 13px;            /* Slightly smaller font */\n"
-"    line-height: 1.4;           /* Adjust line spacing for readability */\n"
+"    line-height: 1.4;           /* Adjust line spacing for"
+                        " readability */\n"
 "}\n"
 "\n"
 "QPlainTextEdit:focus {\n"
@@ -136,13 +134,13 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QRadioButton::indicator:hover {\n"
-"    background-color: #4a90e2;   /* Light blue "
-                        "on hover */\n"
+"    background-color: #4a90e2;   /* Light blue on hover */\n"
 "    border-color: #3d78b2;       /* Darker blue border on hover */\n"
 "}\n"
 "\n"
 "QRadioButton::indicator:checked {\n"
-"    background-color: #4a90e2;   /* Light blue when checked */\n"
+""
+                        "    background-color: #4a90e2;   /* Light blue when checked */\n"
 "    border-color: #3d78b2;       /* Darker blue border when checked */\n"
 "}\n"
 "\n"
@@ -162,12 +160,12 @@ class Ui_MainWindow(object):
 "    color: #ffffff;               /* White text/icon */\n"
 "    border: 1px solid #5b5e60;    /* Light gray border */\n"
 "    border-radius: 4px;           /* Rounded corners */\n"
-"    padding: 6px 12px;            /* Padd"
-                        "ing for comfortable button size */\n"
+"    padding: 6px 12px;            /* Padding for comfortable button size */\n"
 "    font-size: 14px;              /* Font size for text (if any) */\n"
 "}\n"
 "\n"
-"QToolButton:hover {\n"
+"QToolButton:ho"
+                        "ver {\n"
 "    background-color: #4a90e2;    /* Light blue background on hover */\n"
 "    border-color: #3d78b2;        /* Darker blue border on hover */\n"
 "}\n"
@@ -190,10 +188,10 @@ class Ui_MainWindow(object):
 "\n"
 "/* QStatusBar */\n"
 "QStatusBar {\n"
-"    background-color: #2e2e2e;   /* Dar"
-                        "k gray background */\n"
+"    background-color: #2e2e2e;   /* Dark gray background */\n"
 "    border-top: 1px solid #5b5e60; /* Light gray top border for separation */\n"
-"    color: #ffffff;              /* White text */\n"
+"    color: #ffffff;          "
+                        "    /* White text */\n"
 "    font-size: 13px;             /* Slightly smaller font for the status bar */\n"
 "    padding: 6px;                /* Padding inside the status bar */\n"
 "}\n"
@@ -230,6 +228,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.label_3 = QLabel(self.frame_2)
         self.label_3.setObjectName(u"label_3")
+        self.label_3.setStyleSheet(u"QLabel {margin: 9px;}")
 
         self.verticalLayout_4.addWidget(self.label_3)
 
@@ -269,11 +268,18 @@ class Ui_MainWindow(object):
 
         self.frame_5 = QFrame(self.frame_3)
         self.frame_5.setObjectName(u"frame_5")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_5.sizePolicy().hasHeightForWidth())
+        self.frame_5.setSizePolicy(sizePolicy)
+        self.frame_5.setStyleSheet(u"QFrame {margin: 0px;}")
         self.frame_5.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
+        self.horizontalLayout_4.setSpacing(6)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(9, 9, -1, -1)
+        self.horizontalLayout_4.setContentsMargins(9, 0, 9, 9)
         self.gsc_code_input_area = QPlainTextEdit(self.frame_5)
         self.gsc_code_input_area.setObjectName(u"gsc_code_input_area")
         self.gsc_code_input_area.setFrameShape(QFrame.Shape.NoFrame)
@@ -287,7 +293,9 @@ class Ui_MainWindow(object):
         self.frame.setFrameShape(QFrame.Shape.NoFrame)
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame)
+        self.verticalLayout_3.setSpacing(6)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(9, 9, 9, 9)
         self.convert_gsc_to_py_btn = QPushButton(self.frame)
         self.convert_gsc_to_py_btn.setObjectName(u"convert_gsc_to_py_btn")
         icon = QIcon()
@@ -309,6 +317,11 @@ class Ui_MainWindow(object):
 
         self.python_code_input_area = QPlainTextEdit(self.frame_5)
         self.python_code_input_area.setObjectName(u"python_code_input_area")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.python_code_input_area.sizePolicy().hasHeightForWidth())
+        self.python_code_input_area.setSizePolicy(sizePolicy1)
         self.python_code_input_area.setFrameShape(QFrame.Shape.NoFrame)
         self.python_code_input_area.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.python_code_input_area.setTabStopDistance(16.000000000000000)

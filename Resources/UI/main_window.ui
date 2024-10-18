@@ -72,13 +72,11 @@ QPushButton:pressed {
 QLabel {
     color: #ffffff;             /* White text */
     font-size: 14px;            /* Set font size */
-    padding: 3px;              /* Padding inside the central widget */
 }
 
 /* QFrame */
 QFrame {
     background-color: #2e2e2e;  /* Dark gray for frames */
-    border-radius: 0px;         /* No rounded corners */
 }
 
 /* QLineEdit */
@@ -248,6 +246,9 @@ QStatusBar::indicator {
        </property>
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">QLabel {margin: 9px;}</string>
+         </property>
          <property name="text">
           <string>Contributors: Phil81334</string>
          </property>
@@ -329,6 +330,15 @@ QStatusBar::indicator {
        </item>
        <item>
         <widget class="QFrame" name="frame_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame {margin: 0px;}</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Shape::NoFrame</enum>
          </property>
@@ -336,10 +346,19 @@ QStatusBar::indicator {
           <enum>QFrame::Shadow::Raised</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>6</number>
+          </property>
           <property name="leftMargin">
            <number>9</number>
           </property>
           <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
            <number>9</number>
           </property>
           <item>
@@ -367,6 +386,21 @@ QStatusBar::indicator {
              <enum>QFrame::Shadow::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
              <item>
               <widget class="QPushButton" name="convert_gsc_to_py_btn">
                <property name="toolTip">
@@ -394,6 +428,12 @@ QStatusBar::indicator {
           </item>
           <item>
            <widget class="QPlainTextEdit" name="python_code_input_area">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="frameShape">
              <enum>QFrame::Shape::NoFrame</enum>
             </property>
