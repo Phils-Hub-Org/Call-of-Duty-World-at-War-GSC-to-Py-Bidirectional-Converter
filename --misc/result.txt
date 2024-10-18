@@ -1,0 +1,53 @@
+/*===================================
+INPUT
+===================================*/
+
+// This is a single-line comment
+/*
+This is a,
+multi-line comment
+*/
+myFunc(arg) {
+    x = 10; // Initialize x
+    if (x > 5) {
+        x += 1;
+    }
+}
+
+/*===================================
+OUTPUT (lexer)
+===================================*/
+
+('COMMENT', ' This is a single-line comment')    
+('NEWLINE', '\n')
+('COMMENT', '\nThis is a,\nmulti-line comment\n')
+('NEWLINE', '\n')
+('IDENTIFIER', 'myFunc')
+('PUNCTUATION', '(')
+('IDENTIFIER', 'arg')
+('PUNCTUATION', ')')
+('PUNCTUATION', '{')
+('NEWLINE', '\n')
+('IDENTIFIER', 'x')
+('OPERATOR', '=')
+('NUMBER', '10')
+('PUNCTUATION', ';')
+('COMMENT', ' Initialize x')
+('NEWLINE', '\n')
+('IDENTIFIER', 'if')
+('PUNCTUATION', '(')
+('IDENTIFIER', 'x')
+('OPERATOR', '>')
+('NUMBER', '5')
+('PUNCTUATION', ')')
+('PUNCTUATION', '{')
+('NEWLINE', '\n')
+('IDENTIFIER', 'x')
+('OPERATOR', '+')
+('OPERATOR', '=')
+('NUMBER', '1')
+('PUNCTUATION', ';')
+('NEWLINE', '\n')
+('PUNCTUATION', '}')
+('NEWLINE', '\n')
+('PUNCTUATION', '}')

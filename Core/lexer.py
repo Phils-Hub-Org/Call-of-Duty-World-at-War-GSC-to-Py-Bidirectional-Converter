@@ -36,10 +36,12 @@ Example GSC Code:
 /*
 This is a,
 multi-line comment
-/*
-x = 10; // Initialize x
-if (x > 5) {
-    x += 1;
+*/
+myFunc(arg) {
+    x = 10; // Initialize x
+    if (x > 5) {
+        x += 1;
+    }
 }
 
 Output:
@@ -145,6 +147,8 @@ class GscToPyLexer(Lexer):
                 while not cls.endOfInput() and not cls.isCurrChar('\n'):
                     comment += cls.currChar()
                     cls.incrementPosition()
+                
+                cls.TOKENS.append(('COMMENT', comment))
 
             # Multi-line comment
             elif cls.isNextChar('*'):
@@ -161,7 +165,7 @@ class GscToPyLexer(Lexer):
                     comment += cls.currChar()
                     cls.incrementPosition()
             
-            cls.TOKENS.append(('COMMENT', comment))
+                cls.TOKENS.append(('COMMENT', comment))
         
         # Operators
         elif cls.currChar() in {'+', '=', '-', '<', '>', '*', '/', '%'}:
