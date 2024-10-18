@@ -19,9 +19,8 @@
   <property name="windowTitle">
    <string>Phils-Hub - GSC &gt; Py Bidirectional Converter</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <property name="styleSheet">
-    <string notr="true">/* Central Widget */
+  <property name="styleSheet">
+   <string notr="true">/* Central Widget */
 QWidget#centralwidget {
     background-color: #1e1e1e;  /* Dark gray background */
     border: none;               /* No border for a cleaner look */
@@ -177,7 +176,35 @@ QToolButton:disabled {
     color: #777777;               /* Lighter gray text/icon for disabled state */
     border-color: #5b5e60;        /* Keep the border color same as normal state */
 }
+
+/* QStatusBar */
+QStatusBar {
+    background-color: #2e2e2e;   /* Dark gray background */
+    border-top: 1px solid #5b5e60; /* Light gray top border for separation */
+    color: #ffffff;              /* White text */
+    font-size: 13px;             /* Slightly smaller font for the status bar */
+    padding: 6px;                /* Padding inside the status bar */
+}
+
+QStatusBar::item {
+    border: none;                /* No border around individual status items */
+    padding: 0px 5px;            /* Padding between status bar items */
+}
+
+QStatusBar QLabel {
+    color: #ffffff;              /* White text for any QLabel inside the status bar */
+    background-color: transparent; /* Ensure QLabel in status bar matches the bar's background */
+}
+
+QStatusBar::indicator {
+    background-color: #4a90e2;   /* Optional indicator styling, e.g., for icons or status signals */
+    border-radius: 4px;          /* Rounded corners for any indicator elements */
+}
 </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -331,6 +358,7 @@ QToolButton:disabled {
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <resources>
   <include location="../resources.qrc"/>

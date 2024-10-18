@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowBQNsuK.ui'
+## Form generated from reading UI file 'main_windowFoxqrg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QMainWindow, QPlainTextEdit, QPushButton, QSizePolicy,
-    QVBoxLayout, QWidget)
+    QStatusBar, QVBoxLayout, QWidget)
 import Resources.resources_rc
 
 class Ui_MainWindow(object):
@@ -26,9 +26,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1120, 720)
         MainWindow.setMinimumSize(QSize(1120, 720))
-        self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.centralwidget.setStyleSheet(u"/* Central Widget */\n"
+        MainWindow.setStyleSheet(u"/* Central Widget */\n"
 "QWidget#centralwidget {\n"
 "    background-color: #1e1e1e;  /* Dark gray background */\n"
 "    border: none;               /* No border for a cleaner look */\n"
@@ -189,7 +187,35 @@ class Ui_MainWindow(object):
 "    color: #777777;               /* Lighter gray text/icon for disabled state */\n"
 "    border-color: #5b5e60;        /* Keep the border color same as normal state */\n"
 "}\n"
+"\n"
+"/* QStatusBar */\n"
+"QStatusBar {\n"
+"    background-color: #2e2e2e;   /* Dar"
+                        "k gray background */\n"
+"    border-top: 1px solid #5b5e60; /* Light gray top border for separation */\n"
+"    color: #ffffff;              /* White text */\n"
+"    font-size: 13px;             /* Slightly smaller font for the status bar */\n"
+"    padding: 6px;                /* Padding inside the status bar */\n"
+"}\n"
+"\n"
+"QStatusBar::item {\n"
+"    border: none;                /* No border around individual status items */\n"
+"    padding: 0px 5px;            /* Padding between status bar items */\n"
+"}\n"
+"\n"
+"QStatusBar QLabel {\n"
+"    color: #ffffff;              /* White text for any QLabel inside the status bar */\n"
+"    background-color: transparent; /* Ensure QLabel in status bar matches the bar's background */\n"
+"}\n"
+"\n"
+"QStatusBar::indicator {\n"
+"    background-color: #4a90e2;   /* Optional indicator styling, e.g., for icons or status signals */\n"
+"    border-radius: 4px;          /* Rounded corners for any indicator elements */\n"
+"}\n"
 "")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame_3 = QFrame(self.centralwidget)
@@ -275,6 +301,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.frame_3)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        self.statusBar = QStatusBar(MainWindow)
+        self.statusBar.setObjectName(u"statusBar")
+        MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
 
