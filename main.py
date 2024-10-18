@@ -7,10 +7,14 @@ class Entry:
     @classmethod
     def init(cls):
         
+        # Initialize main window
         cls.mainWindow = MainWindow()
-        cls.mainWindow.show()
 
+        # Initialize converter
         cls.converter = Converter(cls.mainWindow)
+
+        # Show main window
+        cls.mainWindow.show()
 
 if __name__ == "__main__":
     import sys

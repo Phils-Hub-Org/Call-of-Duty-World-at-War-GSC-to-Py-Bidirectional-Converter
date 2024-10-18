@@ -207,8 +207,60 @@ QStatusBar::indicator {
     <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Contributors: Phil81334</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item>
      <widget class="QFrame" name="frame_3">
+      <property name="styleSheet">
+       <string notr="true">QFrame {margin-left: 6px; margin-right: 6px; margin-bottom: 6px;}</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::Shape::NoFrame</enum>
       </property>
@@ -295,8 +347,11 @@ QStatusBar::indicator {
             <property name="frameShape">
              <enum>QFrame::Shape::NoFrame</enum>
             </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+            </property>
             <property name="tabStopDistance">
-             <double>8.000000000000000</double>
+             <double>16.000000000000000</double>
             </property>
             <property name="placeholderText">
              <string>Paste gsc code here to convert to python</string>
@@ -342,8 +397,11 @@ QStatusBar::indicator {
             <property name="frameShape">
              <enum>QFrame::Shape::NoFrame</enum>
             </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+            </property>
             <property name="tabStopDistance">
-             <double>8.000000000000000</double>
+             <double>16.000000000000000</double>
             </property>
             <property name="placeholderText">
              <string>Paste python code here to convert to gsc</string>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowFoxqrg.ui'
+## Form generated from reading UI file 'main_windowXHBBvi.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -217,9 +217,28 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setSpacing(6)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.frame_2 = QFrame(self.centralwidget)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.frame_2)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.label_3 = QLabel(self.frame_2)
+        self.label_3.setObjectName(u"label_3")
+
+        self.verticalLayout_4.addWidget(self.label_3)
+
+
+        self.verticalLayout.addWidget(self.frame_2)
+
         self.frame_3 = QFrame(self.centralwidget)
         self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setStyleSheet(u"QFrame {margin-left: 6px; margin-right: 6px; margin-bottom: 6px;}")
         self.frame_3.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
@@ -258,7 +277,8 @@ class Ui_MainWindow(object):
         self.gsc_code_input_area = QPlainTextEdit(self.frame_5)
         self.gsc_code_input_area.setObjectName(u"gsc_code_input_area")
         self.gsc_code_input_area.setFrameShape(QFrame.Shape.NoFrame)
-        self.gsc_code_input_area.setTabStopDistance(8.000000000000000)
+        self.gsc_code_input_area.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.gsc_code_input_area.setTabStopDistance(16.000000000000000)
 
         self.horizontalLayout_4.addWidget(self.gsc_code_input_area)
 
@@ -290,7 +310,8 @@ class Ui_MainWindow(object):
         self.python_code_input_area = QPlainTextEdit(self.frame_5)
         self.python_code_input_area.setObjectName(u"python_code_input_area")
         self.python_code_input_area.setFrameShape(QFrame.Shape.NoFrame)
-        self.python_code_input_area.setTabStopDistance(8.000000000000000)
+        self.python_code_input_area.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.python_code_input_area.setTabStopDistance(16.000000000000000)
 
         self.horizontalLayout_4.addWidget(self.python_code_input_area)
 
@@ -312,6 +333,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Phils-Hub - GSC > Py Bidirectional Converter", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Contributors: Phil81334", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"GSC", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"PYTHON", None))
         self.gsc_code_input_area.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste gsc code here to convert to python", None))

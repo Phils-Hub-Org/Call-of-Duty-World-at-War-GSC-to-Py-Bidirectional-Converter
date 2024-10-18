@@ -20,8 +20,12 @@ class Converter:
             displayMessageBox("Paste GSC code on the left to convert to Python")
             return
 
+        # print(gsc_code)
+
+        # print(True if '\n' in gsc_code else False)
+
         # 1. Tokenize the GSC code
-        # tokens = GscToPyLexer.tokenize(gsc_code)
+        tokens = GscToPyLexer.tokenize(gsc_code)
 
         # # 2. Parse the tokens into Python code
         # python_code = parseGscToPython(tokens)
