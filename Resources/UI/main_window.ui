@@ -23,8 +23,6 @@
    <string notr="true">/* Central Widget */
 QWidget#centralwidget {
     background-color: #1e1e1e;  /* Dark gray background */
-    border: none;               /* No border for a cleaner look */
-    padding: 15px;              /* Padding inside the central widget */
 }
 
 /* QMenuBar */
@@ -36,7 +34,7 @@ QMenuBar {
 
 QMenuBar::item {
     background-color: transparent; /* Transparent background */
-    padding: 6px 12px;             /* Padding for menu items */
+    padding: 6px 6px;             /* Padding for menu items */
     color: #ffffff;                /* White text */
 }
 
@@ -54,13 +52,13 @@ QMenuBar::item:pressed {           /* Pressed menu item */
 QMenu {
     background-color: #2e2e2e;     /* Dark gray background for menus */
     border: 1px solid #5b5e60;     /* Light gray border */
-    padding: 6px;                  /* Padding inside the menu */
 }
 
 QMenu::item {
     background-color: transparent; /* Transparent background for menu items */
     color: #ffffff;                /* White text */
-    padding: 6px 12px;             /* Padding for each menu item */
+	padding: 6px;
+    margin-left: 6px;             /* Padding for each menu item */
 }
 
 QMenu::item:selected {             /* Hovered menu item */
@@ -76,7 +74,6 @@ QMenu::item:pressed {              /* Pressed menu item */
 QMenu::separator {
     height: 1px;
     background-color: #5b5e60;     /* Light gray separator between items */
-    margin: 6px 0;                 /* Spacing around the separator */
 }
 
 /* QMenu::indicator (checkboxes and radio buttons in menus) */
@@ -96,12 +93,6 @@ QMenu::indicator:checked {
 QMenu::indicator:unchecked {
     background-color: #2e2e2e;     /* Keep the dark gray when unchecked */
     border-color: #5b5e60;         /* Light gray border when unchecked */
-}
-
-/* Submenus */
-QMenu::right-arrow {
-    image: url(':/icons/right-arrow.png'); /* Replace with an appropriate icon path */
-    padding: 0px 10px;                     /* Space before submenu arrows */
 }
 
 /* QToolBar */
@@ -128,53 +119,6 @@ QToolBar::separator {
 
 QToolBar::item {
     padding: 4px;                   /* Padding for individual toolbar items */
-}
-
-/* QToolButton in Toolbar */
-QToolButton {
-    background-color: #3c3f41;      /* Dark gray background for toolbar buttons */
-    color: #ffffff;                 /* White text/icon */
-    border: 1px solid #5b5e60;      /* Light gray border */
-    border-radius: 4px;             /* Rounded corners */
-    padding: 6px 12px;              /* Padding for comfortable button size */
-}
-
-QToolButton:hover {
-    background-color: #4a90e2;      /* Light blue on hover */
-    border-color: #3d78b2;          /* Darker blue border on hover */
-}
-
-QToolButton:pressed {
-    background-color: #3d78b2;      /* Darker blue on press */
-    border-color: #2a5f92;          /* Even darker border when pressed */
-}
-
-QToolButton:checked {
-    background-color: #3d78b2;      /* Darker blue when checked */
-    border-color: #2a5f92;          /* Border color when checked */
-}
-
-QToolButton:disabled {
-    background-color: #2e2e2e;      /* Dark gray when disabled */
-    color: #777777;                 /* Lighter gray text/icon for disabled state */
-    border-color: #5b5e60;          /* Keep the border color same as normal state */
-}
-
-/* QToolButton::menu-button */
-QToolButton::menu-button {
-    background-color: #3c3f41;      /* Dark gray background for menu button */
-    border: 1px solid #5b5e60;      /* Light gray border for menu button */
-    padding: 4px;                   /* Padding for the menu button */
-}
-
-QToolButton::menu-button:hover {
-    background-color: #4a90e2;      /* Light blue on hover */
-    border-color: #3d78b2;          /* Darker blue border on hover */
-}
-
-QToolButton::menu-button:pressed {
-    background-color: #3d78b2;      /* Darker blue on press */
-    border-color: #2a5f92;          /* Even darker border on press */
 }
 
 /* QStatusBar */
@@ -222,26 +166,6 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     background: none;             /* Remove arrows */
 }
 
-/* QPushButton */
-QPushButton {
-    background-color: #3c3f41;  /* Dark gray background */
-    color: #ffffff;             /* White text */
-    border: 1px solid #5b5e60;  /* Light gray border */
-    border-radius: 4px;         /* Rounded corners */
-    padding: 6px 12px;          /* Padding for comfortable button size */
-    font-size: 14px;            /* Button text size */
-}
-
-QPushButton:hover {
-    background-color: #4a90e2;  /* Light blue on hover */
-    border-color: #3d78b2;      /* Darker blue border */
-}
-
-QPushButton:pressed {
-    background-color: #3d78b2;  /* Darker blue on press */
-    border-color: #2a5f92;      /* Even darker border when pressed */
-}
-
 /* QLabel */
 QLabel {
     color: #ffffff;             /* White text */
@@ -281,6 +205,26 @@ QPlainTextEdit {
 QPlainTextEdit:focus {
     border-color: #4a90e2;      /* Light blue border on focus */
     background-color: #3a3a3a;  /* Slightly lighter gray on focus */
+}
+
+/* QPushButton */
+QPushButton {
+    background-color: #3c3f41;  /* Dark gray background */
+    color: #ffffff;             /* White text */
+    border: 1px solid #5b5e60;  /* Light gray border */
+    border-radius: 4px;         /* Rounded corners */
+    padding: 6px 12px;          /* Padding for comfortable button size */
+    font-size: 14px;            /* Button text size */
+}
+
+QPushButton:hover {
+    background-color: #4a90e2;  /* Light blue on hover */
+    border-color: #3d78b2;      /* Darker blue border */
+}
+
+QPushButton:pressed {
+    background-color: #3d78b2;  /* Darker blue on press */
+    border-color: #2a5f92;      /* Even darker border when pressed */
 }
 
 /* QRadioButton */
@@ -325,7 +269,6 @@ QToolButton {
     border: 1px solid #5b5e60;    /* Light gray border */
     border-radius: 4px;           /* Rounded corners */
     padding: 6px 12px;            /* Padding for comfortable button size */
-    font-size: 14px;              /* Font size for text (if any) */
 }
 
 QToolButton:hover {
@@ -347,6 +290,23 @@ QToolButton:disabled {
     background-color: #2e2e2e;    /* Dark gray when disabled */
     color: #777777;               /* Lighter gray text/icon for disabled state */
     border-color: #5b5e60;        /* Keep the border color same as normal state */
+}
+
+/* QToolButton::menu-button */
+QToolButton::menu-button {
+    background-color: #3c3f41;      /* Dark gray background for menu button */
+    border: 1px solid #5b5e60;      /* Light gray border for menu button */
+    padding: 4px;                   /* Padding for the menu button */
+}
+
+QToolButton::menu-button:hover {
+    background-color: #4a90e2;      /* Light blue on hover */
+    border-color: #3d78b2;          /* Darker blue border on hover */
+}
+
+QToolButton::menu-button:pressed {
+    background-color: #3d78b2;      /* Darker blue on press */
+    border-color: #2a5f92;          /* Even darker border on press */
 }
 </string>
   </property>
@@ -371,36 +331,9 @@ QToolButton:disabled {
      <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="frame_2">
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-      </layout>
-     </widget>
-    </item>
-    <item>
      <widget class="QFrame" name="frame_3">
       <property name="styleSheet">
-       <string notr="true">QFrame {margin-left: 6px; margin-right: 6px; margin-bottom: 6px;}</string>
+       <string notr="true">QFrame {margin: 6px;}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::NoFrame</enum>
