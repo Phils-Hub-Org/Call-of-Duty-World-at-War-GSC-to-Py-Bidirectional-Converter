@@ -115,6 +115,7 @@ QToolBar {
 QToolBar::handle {
     background-color: #5b5e60;      /* Light gray handle for draggable toolbars */
     width: 10px;                    /* Width of the handle */
+	height: 10px;
     margin: 4px;                    /* Margin around the handle */
 }
 
@@ -612,6 +613,17 @@ QToolButton:disabled {
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
   </widget>
   <action name="actionAbout">
    <property name="text">

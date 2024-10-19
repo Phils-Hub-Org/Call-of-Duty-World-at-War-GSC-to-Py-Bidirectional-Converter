@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowfyhnKC.ui'
+## Form generated from reading UI file 'main_windowTHugcu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -18,9 +18,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QMainWindow, QMenu, QMenuBar, QPlainTextEdit,
-    QPushButton, QSizePolicy, QStatusBar, QVBoxLayout,
-    QWidget)
-import resources_rc
+    QPushButton, QSizePolicy, QStatusBar, QToolBar,
+    QVBoxLayout, QWidget)
+import Resources.resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -126,14 +126,15 @@ class Ui_MainWindow(object):
 "QToolBar::handle {\n"
 "    background-color: #5b5e60;      /* Light gray handle for draggable toolbars */\n"
 "    width: 10px;                    /* Width of the handle */\n"
+"	height: 10px;\n"
 "    margin: 4px;                    /* Margin around the handle */\n"
 "}\n"
 "\n"
 "QToolBar::separator {\n"
 "    background-color: #5b5e60;      /* Light gray for separators */\n"
 "    width: 1px;                     /* Thickness of the separator */\n"
-"    height: 24px;                   /* Height of the separator */"
-                        "\n"
+"    height: 24px;                   /* Height "
+                        "of the separator */\n"
 "    margin: 6px;                    /* Space around the separator */\n"
 "}\n"
 "\n"
@@ -161,8 +162,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QToolButton:checked {\n"
-"    background-colo"
-                        "r: #3d78b2;      /* Darker blue when checked */\n"
+""
+                        "    background-color: #3d78b2;      /* Darker blue when checked */\n"
 "    border-color: #2a5f92;          /* Border color when checked */\n"
 "}\n"
 "\n"
@@ -185,9 +186,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QToolButton::menu-button:pressed {\n"
-"    background-color: #3d78b2;      /* Darker blue on press */\n"
-""
-                        "    border-color: #2a5f92;          /* Even darker border on press */\n"
+"    background-color: #3d78b2;      /* Darker"
+                        " blue on press */\n"
+"    border-color: #2a5f92;          /* Even darker border on press */\n"
 "}\n"
 "\n"
 "/* QStatusBar */\n"
@@ -210,8 +211,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QStatusBar::indicator {\n"
-"    background-color: #4a90e2;   /* Optional indicator styling, e.g., for icons or s"
-                        "tatus signals */\n"
+"    background-color: #4a90e2;   /* Optional indicator styling"
+                        ", e.g., for icons or status signals */\n"
 "    border-radius: 4px;          /* Rounded corners for any indicator elements */\n"
 "}\n"
 "\n"
@@ -239,9 +240,9 @@ class Ui_MainWindow(object):
 "/* QPushButton */\n"
 "QPushButton {\n"
 "    background-color: #3c3f41;  /* Dark gray background */\n"
-"    color: #ffffff;             /* White text */\n"
-"   "
-                        " border: 1px solid #5b5e60;  /* Light gray border */\n"
+"    color: #ffffff;             /*"
+                        " White text */\n"
+"    border: 1px solid #5b5e60;  /* Light gray border */\n"
 "    border-radius: 4px;         /* Rounded corners */\n"
 "    padding: 6px 12px;          /* Padding for comfortable button size */\n"
 "    font-size: 14px;            /* Button text size */\n"
@@ -271,9 +272,9 @@ class Ui_MainWindow(object):
 "/* QLineEdit */\n"
 "QLineEdit {\n"
 "    background-color: #2e2e2e;  /* Dark gray background for input fields */\n"
-"    color: #ffffff;             /* White text */\n"
-"    bor"
-                        "der: 1px solid #5b5e60;  /* Light gray border */\n"
+"    color: #ffffff;             /* Whi"
+                        "te text */\n"
+"    border: 1px solid #5b5e60;  /* Light gray border */\n"
 "    border-radius: 4px;         /* Rounded corners */\n"
 "    padding: 6px;               /* Padding for text input area */\n"
 "}\n"
@@ -296,8 +297,8 @@ class Ui_MainWindow(object):
 "\n"
 "QPlainTextEdit:focus {\n"
 "    border-color: #4a90e2;      /* Light blue border on focus */\n"
-"    background-color: #3a3a3a"
-                        ";  /* Slightly lighter gray on focus */\n"
+"    bac"
+                        "kground-color: #3a3a3a;  /* Slightly lighter gray on focus */\n"
 "}\n"
 "\n"
 "/* QRadioButton */\n"
@@ -322,11 +323,11 @@ class Ui_MainWindow(object):
 "\n"
 "QRadioButton::indicator:checked {\n"
 "    background-color: #4a90e2;   /* Light blue when checked */\n"
-"    border-color: #3d78b2;       /* Darker blue border when checked */\n"
+"    border-color: #3d78b2;       /* Darker blue border when checked"
+                        " */\n"
 "}\n"
 "\n"
-"QRa"
-                        "dioButton::indicator:pressed {\n"
+"QRadioButton::indicator:pressed {\n"
 "    background-color: #3d78b2;   /* Darker blue on press */\n"
 "    border-color: #2a5f92;       /* Even darker border on press */\n"
 "}\n"
@@ -348,9 +349,9 @@ class Ui_MainWindow(object):
 "\n"
 "QToolButton:hover {\n"
 "    background-color: #4a90e2;    /* Light blue background on hover */\n"
-"    border-color: #3d78b2;        /* Darker blue border on hover */\n"
-""
-                        "}\n"
+"    border-color: #3d78b2;        /* Darker blue "
+                        "border on hover */\n"
+"}\n"
 "\n"
 "QToolButton:pressed {\n"
 "    background-color: #3d78b2;    /* Darker blue background on press */\n"
@@ -497,6 +498,9 @@ class Ui_MainWindow(object):
         self.menuFile = QMenu(self.menuBar)
         self.menuFile.setObjectName(u"menuFile")
         MainWindow.setMenuBar(self.menuBar)
+        self.toolBar = QToolBar(MainWindow)
+        self.toolBar.setObjectName(u"toolBar")
+        MainWindow.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.toolBar)
 
         self.menuBar.addAction(self.menuFile.menuAction())
         self.menuFile.addAction(self.actionAbout)
@@ -520,5 +524,6 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.python_code_input_area.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste python code here to convert to gsc", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+        self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 
