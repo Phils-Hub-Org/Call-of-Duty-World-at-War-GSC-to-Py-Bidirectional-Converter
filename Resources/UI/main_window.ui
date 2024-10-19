@@ -27,6 +27,179 @@ QWidget#centralwidget {
     padding: 15px;              /* Padding inside the central widget */
 }
 
+/* QMenuBar */
+QMenuBar {
+    background-color: #2e2e2e;    /* Dark gray background */
+    color: #ffffff;               /* White text */
+    border-bottom: 1px solid #5b5e60;  /* Light gray border for separation */
+}
+
+QMenuBar::item {
+    background-color: transparent; /* Transparent background */
+    padding: 6px 12px;             /* Padding for menu items */
+    color: #ffffff;                /* White text */
+}
+
+QMenuBar::item:selected {          /* Hovered menu item */
+    background-color: #4a90e2;     /* Light blue on hover */
+    color: #ffffff;                /* Ensure text remains white */
+}
+
+QMenuBar::item:pressed {           /* Pressed menu item */
+    background-color: #3d78b2;     /* Darker blue on press */
+    color: #ffffff;                /* Ensure text remains white */
+}
+
+/* QMenu */
+QMenu {
+    background-color: #2e2e2e;     /* Dark gray background for menus */
+    border: 1px solid #5b5e60;     /* Light gray border */
+    padding: 6px;                  /* Padding inside the menu */
+}
+
+QMenu::item {
+    background-color: transparent; /* Transparent background for menu items */
+    color: #ffffff;                /* White text */
+    padding: 6px 12px;             /* Padding for each menu item */
+}
+
+QMenu::item:selected {             /* Hovered menu item */
+    background-color: #4a90e2;     /* Light blue background on hover */
+    color: #ffffff;                /* Ensure text remains white */
+}
+
+QMenu::item:pressed {              /* Pressed menu item */
+    background-color: #3d78b2;     /* Darker blue background on press */
+    color: #ffffff;                /* Ensure text remains white */
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #5b5e60;     /* Light gray separator between items */
+    margin: 6px 0;                 /* Spacing around the separator */
+}
+
+/* QMenu::indicator (checkboxes and radio buttons in menus) */
+QMenu::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: #2e2e2e;     /* Dark gray background for indicators */
+    border: 1px solid #5b5e60;     /* Light gray border */
+    border-radius: 2px;            /* Slightly rounded corners */
+}
+
+QMenu::indicator:checked {
+    background-color: #4a90e2;     /* Light blue when checked */
+    border-color: #3d78b2;         /* Darker blue border when checked */
+}
+
+QMenu::indicator:unchecked {
+    background-color: #2e2e2e;     /* Keep the dark gray when unchecked */
+    border-color: #5b5e60;         /* Light gray border when unchecked */
+}
+
+/* Submenus */
+QMenu::right-arrow {
+    image: url(':/icons/right-arrow.png'); /* Replace with an appropriate icon path */
+    padding: 0px 10px;                     /* Space before submenu arrows */
+}
+
+/* QToolBar */
+QToolBar {
+    background-color: #2e2e2e;      /* Dark gray background */
+    border: 1px solid #5b5e60;      /* Light gray border */
+    padding: 4px;                   /* Padding inside the toolbar */
+    spacing: 4px;                   /* Spacing between toolbar buttons */
+}
+
+QToolBar::handle {
+    background-color: #5b5e60;      /* Light gray handle for draggable toolbars */
+    width: 10px;                    /* Width of the handle */
+    margin: 4px;                    /* Margin around the handle */
+}
+
+QToolBar::separator {
+    background-color: #5b5e60;      /* Light gray for separators */
+    width: 1px;                     /* Thickness of the separator */
+    height: 24px;                   /* Height of the separator */
+    margin: 6px;                    /* Space around the separator */
+}
+
+QToolBar::item {
+    padding: 4px;                   /* Padding for individual toolbar items */
+}
+
+/* QToolButton in Toolbar */
+QToolButton {
+    background-color: #3c3f41;      /* Dark gray background for toolbar buttons */
+    color: #ffffff;                 /* White text/icon */
+    border: 1px solid #5b5e60;      /* Light gray border */
+    border-radius: 4px;             /* Rounded corners */
+    padding: 6px 12px;              /* Padding for comfortable button size */
+}
+
+QToolButton:hover {
+    background-color: #4a90e2;      /* Light blue on hover */
+    border-color: #3d78b2;          /* Darker blue border on hover */
+}
+
+QToolButton:pressed {
+    background-color: #3d78b2;      /* Darker blue on press */
+    border-color: #2a5f92;          /* Even darker border when pressed */
+}
+
+QToolButton:checked {
+    background-color: #3d78b2;      /* Darker blue when checked */
+    border-color: #2a5f92;          /* Border color when checked */
+}
+
+QToolButton:disabled {
+    background-color: #2e2e2e;      /* Dark gray when disabled */
+    color: #777777;                 /* Lighter gray text/icon for disabled state */
+    border-color: #5b5e60;          /* Keep the border color same as normal state */
+}
+
+/* QToolButton::menu-button */
+QToolButton::menu-button {
+    background-color: #3c3f41;      /* Dark gray background for menu button */
+    border: 1px solid #5b5e60;      /* Light gray border for menu button */
+    padding: 4px;                   /* Padding for the menu button */
+}
+
+QToolButton::menu-button:hover {
+    background-color: #4a90e2;      /* Light blue on hover */
+    border-color: #3d78b2;          /* Darker blue border on hover */
+}
+
+QToolButton::menu-button:pressed {
+    background-color: #3d78b2;      /* Darker blue on press */
+    border-color: #2a5f92;          /* Even darker border on press */
+}
+
+/* QStatusBar */
+QStatusBar {
+    background-color: #2e2e2e;   /* Dark gray background */
+    border-top: 1px solid #5b5e60; /* Light gray top border for separation */
+    color: #ffffff;              /* White text */
+    font-size: 13px;             /* Slightly smaller font for the status bar */
+    padding: 6px;                /* Padding inside the status bar */
+}
+
+QStatusBar::item {
+    border: none;                /* No border around individual status items */
+    padding: 0px 5px;            /* Padding between status bar items */
+}
+
+QStatusBar QLabel {
+    color: #ffffff;              /* White text for any QLabel inside the status bar */
+    background-color: transparent; /* Ensure QLabel in status bar matches the bar's background */
+}
+
+QStatusBar::indicator {
+    background-color: #4a90e2;   /* Optional indicator styling, e.g., for icons or status signals */
+    border-radius: 4px;          /* Rounded corners for any indicator elements */
+}
+
 /* Scroll Area Styling (optional) */
 QScrollArea {
     background-color: transparent; /* Transparent to match the central widget */
@@ -174,30 +347,6 @@ QToolButton:disabled {
     color: #777777;               /* Lighter gray text/icon for disabled state */
     border-color: #5b5e60;        /* Keep the border color same as normal state */
 }
-
-/* QStatusBar */
-QStatusBar {
-    background-color: #2e2e2e;   /* Dark gray background */
-    border-top: 1px solid #5b5e60; /* Light gray top border for separation */
-    color: #ffffff;              /* White text */
-    font-size: 13px;             /* Slightly smaller font for the status bar */
-    padding: 6px;                /* Padding inside the status bar */
-}
-
-QStatusBar::item {
-    border: none;                /* No border around individual status items */
-    padding: 0px 5px;            /* Padding between status bar items */
-}
-
-QStatusBar QLabel {
-    color: #ffffff;              /* White text for any QLabel inside the status bar */
-    background-color: transparent; /* Ensure QLabel in status bar matches the bar's background */
-}
-
-QStatusBar::indicator {
-    background-color: #4a90e2;   /* Optional indicator styling, e.g., for icons or status signals */
-    border-radius: 4px;          /* Rounded corners for any indicator elements */
-}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -244,16 +393,6 @@ QStatusBar::indicator {
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="styleSheet">
-          <string notr="true">QLabel {margin: 9px;}</string>
-         </property>
-         <property name="text">
-          <string>Contributors: Phil81334</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -457,6 +596,28 @@ QStatusBar::indicator {
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1120</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../resources.qrc"/>
