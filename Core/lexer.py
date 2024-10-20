@@ -178,6 +178,8 @@ Line Number: {cls.getLineNumber() + 1}
     def getNextToken(cls) -> None:
         # Get the next token
 
+        # print(f"Current char: '{cls.currChar()}'")
+
         # Spaces: Ignore
         while cls.isCustomWhitespace(cls.currChar()):
             cls.incrementPosition()
@@ -187,8 +189,14 @@ Line Number: {cls.getLineNumber() + 1}
             cls.TOKENS.append(('NEWLINE', cls.currChar()))
             cls.incrementPosition()
 
-        # Comment
+        # Single-line or multi-line comment | Divide equals | Divide
         elif cls.isCurrChar('/'):
+            # Edge case where there is no next character
+            try:
+                next_char = cls.nextChar()
+            except IndexError:
+                return
+
             # Single-line comment
             if cls.isNextChar('/'):
                 # Move past '//'
@@ -216,6 +224,14 @@ Line Number: {cls.getLineNumber() + 1}
                     cls.incrementPosition()
             
                 cls.TOKENS.append(('COMMENT', comment))
+            # Divide equals
+            elif cls.isNextChar('='):
+                cls.TOKENS.append(('DIVIDE_EQUALS', '/='))
+                cls.incrementPosition(2)
+            # Divide
+            else:
+                cls.TOKENS.append(('DIVIDE', cls.currChar()))
+                cls.incrementPosition()
         
         # Identifier | Number
         elif cls.currChar().isalpha() or cls.currChar().isdigit() or cls.isCurrChar('_'):
@@ -241,14 +257,20 @@ Line Number: {cls.getLineNumber() + 1}
             cls.TOKENS.append(('MODULUS', cls.currChar()))
             cls.incrementPosition()
         
-        # Assignment | Equals
+        # Equals to | Assignment
         elif cls.isCurrChar('='):
-            # Equals
-            if cls.isNextChar('='):
-                cls.TOKENS.append(('EQUALS', '=='))
-                cls.incrementPosition(2)
-            # Assignment
-            else:
+            # Edge case where there is no next character
+            try:
+                # Equals to
+                if cls.isNextChar('='):
+                    cls.TOKENS.append(('EQUALS', '=='))
+                    cls.incrementPosition(2)
+                else:
+                    # Assignment
+                    cls.TOKENS.append(('ASSIGNMENT', cls.currChar()))
+                    cls.incrementPosition()
+            except IndexError:
+                # Assignment
                 cls.TOKENS.append(('ASSIGNMENT', cls.currChar()))
                 cls.incrementPosition()
         
@@ -305,17 +327,6 @@ Line Number: {cls.getLineNumber() + 1}
             # Multiplication
             else:
                 cls.TOKENS.append(('MULTIPLY', cls.currChar()))
-                cls.incrementPosition()
-        
-        # Divide equals | Division
-        elif cls.isCurrChar('/'):
-            # Divide equals
-            if cls.isNextChar('='):
-                cls.TOKENS.append(('DIVIDE_EQUALS', '/='))
-                cls.incrementPosition(2)
-            # Division
-            else:
-                cls.TOKENS.append(('DIVIDE', cls.currChar()))
                 cls.incrementPosition()
         
         # Keyword
@@ -378,15 +389,21 @@ Line Number: {cls.getLineNumber() + 1}
             # Move past closing quote
             cls.incrementPosition()
         
-        # Double Colon
-        elif cls.isCurrChar(':') and cls.isNextChar(':'):
-            cls.TOKENS.append(('DOUBLE_COLON', cls.currChar() + cls.nextChar()))
-            cls.incrementPosition(2)
+        # Double Colon | Single Colon
+        elif cls.isCurrChar(':'):
+            # Double Colon
+            if cls.isNextChar(':'):
+                cls.TOKENS.append(('DOUBLE_COLON', cls.currChar() + cls.nextChar()))
+                cls.incrementPosition(2)
+            # Single Colon
+            else:
+                cls.TOKENS.append(('SINGLE_COLON', cls.currChar()))
+                cls.incrementPosition()
         
         # Preprocessor Directive
         elif cls.isCurrChar('#'):
             line = ''
-            while not cls.endOfInput() and cls.currChar() != '\n':
+            while not cls.endOfInput() and not cls.currChar().isspace():
                 line += cls.currChar()
                 cls.incrementPosition()
             
@@ -436,7 +453,18 @@ Line Number: {cls.getLineNumber() + 1}
         
         # Unrecognized character
         else:
-            print(f'Unrecognized character: {cls.currChar()}, Pos: {cls.currPos()}')
+            cls.unrecognizedCharacter()
+    
+    @classmethod
+    def unrecognizedCharacter(cls):
+        if not cls.endOfInput():
+            # print(f'Unrecognized character: {cls.currChar()}, Pos: {cls.currPos()}')
+            print(f"""/*========================================
+Unrecognized character: '{cls.currChar()}'
+Char Position: {cls.currPos()}
+Line Number: {cls.getLineNumber()}
+========================================*/""")
+
             cls.TOKENS.append(('UNKNOWN', cls.currChar()))
             cls.incrementPosition()
 

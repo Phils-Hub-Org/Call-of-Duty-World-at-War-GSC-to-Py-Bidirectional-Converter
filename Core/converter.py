@@ -27,7 +27,10 @@ class Converter:
         # 1. Tokenize the GSC code
         tokens = GscToPyLexer.tokenize(self.ui.gsc_code_input_area, gsc_code)
 
-        print('\n'.join(str(token) for token in tokens))  # Print the tokens for debugging purposes
+        # print('\n'.join(str(token) for token in tokens))  # Print the tokens for debugging purposes
+        # write to file instead of printing?
+        with open('tokens.txt', 'w') as f:
+            f.write('\n'.join(str(token) for token in tokens))
 
         # # 2. Parse the tokens into Python code
         # python_code = parseGscToPython(tokens)
