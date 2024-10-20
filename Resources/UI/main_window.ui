@@ -98,7 +98,7 @@ QMenu::indicator:unchecked {
 /* QToolBar */
 QToolBar {
     background-color: #2e2e2e;      /* Dark gray background */
-    border: 1px solid #5b5e60;      /* Light gray border */
+    border-bottom: 1px solid #5b5e60;      /* Light gray border */
     padding: 4px;                   /* Padding inside the toolbar */
     spacing: 4px;                   /* Spacing between toolbar buttons */
 }
